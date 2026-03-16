@@ -458,7 +458,7 @@ func main() {
 					// Field within DeviceRadioTable nested type
 					f.CustomUnmarshalType = "types.Number"
 					f.CustomUnmarshalFunc = "types.ToInt64Pointer"
-				case "TxPower":
+				case "Channel", "TxPower":
 					if f.FieldType == fields.String {
 						f.CustomUnmarshalType = fields.Number
 					}
