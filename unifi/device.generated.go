@@ -882,6 +882,7 @@ func (dst *DeviceRadioTable) UnmarshalJSON(b []byte) error {
 		Maxsta              *types.Number `json:"maxsta"`
 		MinRssi             *types.Number `json:"min_rssi"`
 		SensLevel           *types.Number `json:"sens_level"`
+		TxPower             types.Number  `json:"tx_power"`
 
 		*Alias
 	}{
@@ -940,6 +941,9 @@ func (dst *DeviceRadioTable) UnmarshalJSON(b []byte) error {
 			var zero int64
 			dst.SensLevel = &zero
 		}
+	}
+	if val, err := aux.TxPower.Int64(); err == nil {
+		dst.TxPower = strconv.FormatInt(val, 10)
 	}
 
 	return nil
